@@ -1,0 +1,129 @@
+.global-wrapper {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+/* 🌟 HERO CARD */
+.global-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  padding: 40px 36px;
+  border-radius: 28px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.22),
+    rgba(255,255,255,0.06)
+  );
+
+  backdrop-filter: blur(22px);
+  color: #f8fafc;
+  text-align: center;
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,0.7),
+    inset 0 1px 2px rgba(255,255,255,0.35);
+
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
+}
+
+/* Lift on hover */
+.global-card:hover {
+  transform: translateY(-12px) scale(1.04);
+}
+
+/* 🌈 Gradient glow border */
+.global-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    rgba(56,189,248,0.8),
+    rgba(99,102,241,0.8),
+    rgba(236,72,153,0.8)
+  );
+  opacity: 0.35;
+  z-index: 0;
+}
+
+/* ✨ Light sweep gloss */
+.global-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 20%,
+    rgba(255,255,255,0.45),
+    transparent 80%
+  );
+  transform: translateX(-120%);
+  transition: transform 1.2s ease;
+  z-index: 1;
+}
+
+.global-card:hover::after {
+  transform: translateX(120%);
+}
+
+/* Content above effects */
+.global-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Title */
+.global-card h1 {
+  font-size: 26px;
+  margin-bottom: 28px;
+  letter-spacing: 0.4px;
+}
+
+/* Stats Grid */
+.global-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* Stat Tiles */
+.stat {
+  padding: 18px 12px;
+  border-radius: 18px;
+  background: rgba(15,23,42,0.55);
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,0.25),
+    0 10px 30px rgba(0,0,0,0.4);
+
+  transition: transform 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-6px) scale(1.05);
+}
+
+.stat span {
+  display: block;
+  font-size: 13px;
+  opacity: 0.8;
+  margin-bottom: 6px;
+}
+
+.stat strong {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Accent colors */
+.stat.cases strong { color: #38bdf8; }
+.stat.recovered strong { color: #4ade80; }
+.stat.deaths strong { color: #f87171; }
